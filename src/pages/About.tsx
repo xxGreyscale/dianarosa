@@ -1,7 +1,6 @@
 import { Target, Telescope, Award, Check, ShieldCheck } from 'lucide-react';
 import { PageHero } from '../components/layout/PageHero';
 import { Button } from '../components/ui/Button';
-import { Logo } from '../components/ui/Logo';
 import { DESTINATIONS } from '../lib/constants';
 import { IMAGES } from '../lib/assets';
 
@@ -11,8 +10,12 @@ export function About() {
       <PageHero
         title="About us"
         rightSlot={
-          <div className="flex items-center pr-4">
-            <Logo className="origin-right scale-[1.6]" />
+          <div className="flex items-center py-4 pr-4 md:py-8">
+            <img
+              src={IMAGES.logoPrimary}
+              alt="Dianarose Logistics"
+              className="w-full max-w-[340px] object-contain opacity-30"
+            />
           </div>
         }
       />
@@ -193,63 +196,99 @@ function ValueCard({
 }
 
 function AfricaMap() {
-  // Stylised Africa outline with network nodes — a simplified illustration
+  const points = [
+    [112, 72],
+    [140, 66],
+    [172, 76],
+    [204, 96],
+    [222, 126],
+    [184, 132],
+    [152, 142],
+    [114, 150],
+    [106, 188],
+    [136, 198],
+    [170, 194],
+    [198, 188],
+    [190, 226],
+    [160, 240],
+    [136, 272],
+    [166, 296],
+    [188, 322],
+    [174, 350],
+  ] as const;
+
+  const routes = [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [2, 5],
+    [5, 6],
+    [6, 7],
+    [7, 8],
+    [8, 9],
+    [9, 10],
+    [10, 11],
+    [10, 12],
+    [12, 13],
+    [13, 14],
+    [14, 15],
+    [15, 16],
+    [16, 17],
+    [6, 10],
+    [9, 13],
+  ] as const;
+
   return (
     <svg
       width="320"
       height="380"
       viewBox="0 0 320 380"
       fill="none"
-      className="text-white opacity-90"
+      className="w-full max-w-[320px] text-white"
       aria-label="Africa map showing destination network"
     >
       <path
-        d="M 130 30 Q 100 40 90 70 Q 80 100 95 130 Q 80 150 75 180 Q 70 220 95 260 Q 110 300 140 330 Q 170 350 200 340 Q 230 330 245 295 Q 255 260 240 220 Q 250 190 240 160 Q 230 130 210 110 Q 200 80 175 60 Q 155 35 130 30 Z"
+        d="M130 18C112 22 97 36 88 56C79 77 81 98 77 119C72 145 75 167 88 189C101 211 95 238 109 266C123 293 145 336 171 354C191 368 210 362 220 344C229 328 238 304 243 284C247 265 241 244 235 223C229 199 236 174 230 152C224 129 213 111 196 95C183 83 173 69 166 52C160 36 148 24 130 18Z"
         stroke="currentColor"
-        strokeWidth="1.5"
-        fill="none"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
       />
-      {/* Network nodes */}
-      {[
-        [120, 80],
-        [160, 100],
-        [200, 90],
-        [180, 140],
-        [130, 150],
-        [220, 170],
-        [165, 200],
-        [110, 200],
-        [150, 250],
-        [200, 240],
-        [180, 290],
-        [140, 310],
-      ].map(([cx, cy], i) => (
-        <g key={i}>
-          <circle cx={cx} cy={cy} r="4" fill="currentColor" />
+      <path
+        d="M236 284C246 294 250 308 247 322C243 336 232 345 223 339C215 333 214 318 220 305C225 297 231 290 236 284Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+
+      <g stroke="white" strokeWidth="0.9" strokeOpacity="0.42">
+        {routes.map(([from, to]) => (
+          <line
+            key={`${from}-${to}`}
+            x1={points[from][0]}
+            y1={points[from][1]}
+            x2={points[to][0]}
+            y2={points[to][1]}
+          />
+        ))}
+      </g>
+
+      {points.map(([cx, cy], index) => (
+        <g key={index} className="group cursor-pointer">
           <circle
             cx={cx}
             cy={cy}
-            r="8"
-            stroke="currentColor"
-            strokeOpacity="0.4"
-            fill="none"
+            r="4"
+            className="origin-center fill-white transition-all duration-200 [transform-box:fill-box] group-hover:scale-150 group-hover:fill-[#111111]"
+          />
+          <circle
+            cx={cx}
+            cy={cy}
+            r="10"
+            className="fill-none stroke-white/90 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
           />
         </g>
       ))}
-      {/* Connecting lines */}
-      <g stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.55">
-        <line x1="120" y1="80" x2="160" y2="100" />
-        <line x1="160" y1="100" x2="200" y2="90" />
-        <line x1="160" y1="100" x2="180" y2="140" />
-        <line x1="180" y1="140" x2="130" y2="150" />
-        <line x1="180" y1="140" x2="220" y2="170" />
-        <line x1="220" y1="170" x2="165" y2="200" />
-        <line x1="165" y1="200" x2="110" y2="200" />
-        <line x1="165" y1="200" x2="150" y2="250" />
-        <line x1="150" y1="250" x2="200" y2="240" />
-        <line x1="200" y1="240" x2="180" y2="290" />
-        <line x1="180" y1="290" x2="140" y2="310" />
-      </g>
     </svg>
   );
 }

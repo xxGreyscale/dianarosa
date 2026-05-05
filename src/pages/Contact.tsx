@@ -39,24 +39,19 @@ export function Contact() {
       <PageHero
         title="Contact us"
         rightSlot={
-          <div
-            className="bg-bottom-right aspect-[4/5] w-full max-w-[400px] bg-contain bg-no-repeat"
-            style={{
-              backgroundImage: `url('${IMAGES.womanHeadset}')`,
-            }}
-            aria-hidden="true"
-          />
+          <div>
+            <img
+              src={IMAGES.womanHeadset}
+              alt=""
+              className="object-bottom-right h-full w-full object-contain"
+            />
+          </div>
         }
       >
-        {/* No description on contact hero — offices are below in a custom layout */}
-      </PageHero>
-
-      {/* Office addresses overlapping the hero — re-render in a band */}
-      <section className="relative z-10 -mt-10 bg-gradient-to-r from-brand-black via-neutral-dark to-neutral-light/40 text-white md:-mt-14">
-        <div className="container-page grid max-w-3xl gap-10 py-7 md:grid-cols-2 md:py-9">
+        <div className="mt-7 grid gap-6 text-white md:grid-cols-2 md:gap-8">
           {[OFFICES.head, OFFICES.drc].map(office => (
             <div key={office.title}>
-              <h3 className="mb-2 font-semibold">{office.title}</h3>
+              <h3 className="mb-2 font-semibold text-white">{office.title}</h3>
               <address className="space-y-0.5 text-sm not-italic leading-relaxed text-white/90">
                 {'company' in office && office.company && (
                   <div>{office.company}</div>
@@ -68,7 +63,7 @@ export function Contact() {
             </div>
           ))}
         </div>
-      </section>
+      </PageHero>
 
       {/* Form */}
       <section className="bg-white py-16 md:py-20">

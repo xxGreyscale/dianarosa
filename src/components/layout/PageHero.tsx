@@ -4,6 +4,7 @@ interface PageHeroProps {
   title: string;
   description?: string;
   rightSlot?: ReactNode;
+  children?: ReactNode;
   /** Sets the maximum width of the text column (default 50%) */
   textWidth?: string;
 }
@@ -12,12 +13,13 @@ export function PageHero({
   title,
   description,
   rightSlot,
-  textWidth = 'md:max-w-[55%]',
+  children,
+  textWidth = 'md:max-w-[100%]',
 }: PageHeroProps) {
   return (
     <section className="hero-bg relative overflow-hidden">
-      <div className="container-page relative py-14 md:py-20">
-        <div className="grid items-center gap-8 md:grid-cols-2">
+      <div className="container-page relative">
+        <div className="grid items-center gap-8 pt-8 md:grid-cols-[auto,1fr] md:pt-12">
           {/* Text column */}
           <div className={`${textWidth} relative z-10`}>
             <h1 className="mb-4 text-4xl font-bold leading-[1.1] text-brand-gold md:text-5xl">
@@ -28,6 +30,7 @@ export function PageHero({
                 {description}
               </p>
             )}
+            {children}
           </div>
 
           {/* Right image / illustration */}

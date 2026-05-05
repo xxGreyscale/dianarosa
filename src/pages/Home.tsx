@@ -3,13 +3,13 @@ import { Check } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { ServiceCard } from '../components/ui/ServiceCard';
 import { SERVICES, STATS, WHY_CHOOSE_US } from '../lib/constants';
-import { IMAGES } from '../lib/assets';
+import { IMAGES, ILLUSTRATIONS } from '../lib/assets';
 
 export function Home() {
   return (
     <>
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden bg-brand-black text-white">
+      <section className="relative min-h-[82vh] overflow-hidden bg-brand-black text-white">
         {/* Image placeholder — port background */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-60"
@@ -23,7 +23,7 @@ export function Home() {
           className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/85 to-transparent"
           aria-hidden="true"
         />
-        <div className="container-page relative py-24 md:py-32">
+        <div className="container-page relative flex min-h-[82vh] items-center pb-16 md:pb-20">
           <div className="max-w-2xl">
             <h1 className="mb-5 text-4xl font-bold leading-[1.1] md:text-5xl">
               Reliable Cargo Movement
@@ -43,9 +43,9 @@ export function Home() {
       </section>
 
       {/* ─── Our Services grid ─── */}
-      <section className="relative z-10 -mt-10 bg-white py-16 md:-mt-14 md:py-20">
+      <section className="relative z-10 pb-16 md:pb-20">
         <div className="container-page">
-          <div className="rounded-xl bg-surface-gray px-6 py-10 md:px-12 md:py-12">
+          <div className="md:-mt-18 -mt-10 rounded-xl bg-surface-gray px-6 py-10 md:px-12 md:py-12">
             <div className="mx-auto mb-10 max-w-2xl text-center">
               <h2 className="mb-3 text-2xl font-bold text-brand-black md:text-3xl">
                 Our Services
@@ -80,22 +80,24 @@ export function Home() {
       </section>
 
       {/* ─── About us split ─── */}
-      <section className="bg-gold-cta text-white">
-        <div className="container-page grid items-center gap-8 py-16 md:grid-cols-2 md:py-20">
+      <section className="relative z-20 overflow-visible text-white">
+        <div
+          className="slanted-bg absolute inset-0 bg-gold-cta"
+          aria-hidden="true"
+        />
+        <div className="container-page relative grid items-center py-4 md:grid-cols-[1.6fr,1fr] md:py-8">
           {/* Truck image side */}
-          <div className="flex justify-center md:justify-start">
-            <div
-              className="aspect-[4/3] w-full max-w-[480px] bg-contain bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url('${IMAGES.truck}')`,
-              }}
-              aria-hidden="true"
+          <div className="relative z-30 aspect-[4/3] w-full max-w-none md:-ml-[max(24px,calc((100vw-1200px)/2+24px))]">
+            <img
+              src={IMAGES.bigTruck}
+              alt=""
+              className="object-bottom-left absolute -top-4 left-0 z-40 h-full w-auto min-w-full max-w-none object-cover md:-top-8"
             />
           </div>
 
           {/* Text */}
-          <div>
-            <h2 className="mb-5 text-3xl font-bold md:text-4xl">About us</h2>
+          <div className="relative z-30 py-0 pb-0 md:pb-12 md:pt-12">
+            <h2 className="my-5 text-3xl font-bold md:text-4xl">About us</h2>
             <div className="space-y-4 text-sm leading-relaxed text-white/95">
               <p>
                 Diana Rose Logistics Ltd is a leading logistics company in
@@ -132,22 +134,23 @@ export function Home() {
 
       {/* ─── Why Choose ─── */}
       <section className="relative overflow-hidden bg-white py-16 md:py-20">
-        {/* Decorative network dots background */}
+        {/* Decorative globe background */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-30"
+          className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-repeat opacity-10"
+          style={{
+            backgroundImage: `url('${ILLUSTRATIONS.globBg}')`,
+          }}
           aria-hidden="true"
-        >
-          <NetworkPattern />
-        </div>
+        />
 
         <div className="container-page relative">
-          <h2 className="mb-12 text-3xl font-bold leading-tight text-brand-black md:text-4xl">
+          <h2 className="my-20 text-3xl font-bold leading-tight text-brand-black md:text-4xl">
             Why Choose
             <br />
             Diana Rose Logistics?
           </h2>
 
-          <div className="mb-10 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+          <div className="mb-16 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-8 md:gap-y-14">
             {STATS.map(stat => (
               <div key={stat.label}>
                 <div className="mb-1 text-4xl font-bold text-brand-black md:text-5xl">
@@ -160,7 +163,7 @@ export function Home() {
             ))}
           </div>
 
-          <div className="grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="mb-24 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
             {WHY_CHOOSE_US.map(reason => (
               <div key={reason} className="flex items-start gap-3">
                 <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-black">
@@ -236,7 +239,7 @@ export function Home() {
       </section>
 
       {/* ─── Are ready to delivery your cargo ─── */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-white pt-16 md:pt-20">
         <div className="container-page grid items-center gap-10 md:grid-cols-2">
           <div>
             <h2 className="mb-5 text-3xl font-bold leading-tight text-brand-black md:text-4xl">
@@ -261,7 +264,7 @@ export function Home() {
           </div>
           <div className="hidden justify-end md:flex">
             <div
-              className="aspect-[4/3] w-full max-w-[480px] bg-contain bg-bottom bg-no-repeat"
+              className="aspect-[4/3] h-[94%] w-full max-w-none bg-cover bg-bottom bg-no-repeat"
               style={{
                 backgroundImage: `url('${IMAGES.womanHeadset}')`,
               }}
@@ -271,33 +274,5 @@ export function Home() {
         </div>
       </section>
     </>
-  );
-}
-
-function NetworkPattern() {
-  // Decorative dots and connecting lines, placed lightly across the section
-  const dots = Array.from({ length: 24 }).map((_, i) => ({
-    cx: (i * 67) % 1200,
-    cy: ((i * 113) % 400) + 20,
-  }));
-  return (
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 1200 400"
-      preserveAspectRatio="xMidYMid slice"
-      className="text-neutral-light"
-    >
-      {dots.map((d, i) => (
-        <circle
-          key={i}
-          cx={d.cx}
-          cy={d.cy}
-          r="3"
-          fill="currentColor"
-          opacity="0.5"
-        />
-      ))}
-    </svg>
   );
 }

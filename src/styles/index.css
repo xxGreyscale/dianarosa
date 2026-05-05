@@ -30,9 +30,15 @@
     background: linear-gradient(
       90deg,
       #111111 0%,
-      #1f1f1f 35%,
-      #5a5a5a 65%,
-      #d4d4d4 100%
+      #1a1a1a 24%,
+      #4b4b4b 48%,
+      #8a8a8a 68%,
+      #dcdcdc 86%,
+      #f3f3f3 100%
     );
   }
+}
+
+.slanted-bg {
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
 }

@@ -15,7 +15,7 @@ export function Services() {
         description="Dianarose Logistics is a trusted logistics company committed to delivering efficiency, reliability, and professionalism in every operation. Built on strong industry expertise and a customer-focused approach, we prioritize precision, transparency, and accountability at every stage of our engagement."
         rightSlot={
           <div
-            className="aspect-[4/3] w-full max-w-[420px] bg-contain bg-right bg-no-repeat"
+            className="aspect-[4/3] w-full max-w-[456px] bg-contain bg-right bg-no-repeat"
             style={{
               backgroundImage: `url('${IMAGES.truck}')`,
             }}
@@ -79,13 +79,12 @@ export function Services() {
       </section>
 
       {/* ─── Have an enquiry CTA ─── */}
-      <section className="border-t border-neutral-light/50 bg-white py-12 md:py-16">
-        <div className="container-page grid items-center gap-10 md:grid-cols-[auto,1fr]">
-          <div
-            className="aspect-[3/4] w-full max-w-[280px] bg-contain bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('${IMAGES.manThinking}')`,
-            }}
+      <section className="border-t border-neutral-light/50 bg-white pt-12 md:pt-16">
+        <div className="container-page grid items-center gap-4 md:grid-cols-[1fr,1.5fr]">
+          <img
+            src={IMAGES.manThinking}
+            alt=""
+            className="ml-auto w-full max-w-[280px] object-contain"
             aria-hidden="true"
           />
           <div>
