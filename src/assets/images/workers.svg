@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- Container yard background -->
+  <rect width="600" height="400" fill="#0c4a6e"/>
+  <!-- Containers behind -->
+  <rect x="0" y="100" width="180" height="250" fill="#1e40af"/>
+  <rect x="180" y="120" width="160" height="230" fill="#0e7490"/>
+  <rect x="340" y="100" width="170" height="250" fill="#0c4a6e"/>
+  <rect x="510" y="130" width="120" height="220" fill="#075985"/>
+  <!-- Container corrugation -->
+  <g stroke="#000" stroke-opacity="0.15" stroke-width="1">
+    <line x1="0" y1="150" x2="600" y2="150"/>
+    <line x1="0" y1="200" x2="600" y2="200"/>
+    <line x1="0" y1="250" x2="600" y2="250"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+  </g>
+
+  <!-- Left worker (woman, blue hat + denim) -->
+  <g>
+    <!-- Hard hat -->
+    <ellipse cx="200" cy="180" rx="48" ry="32" fill="#0284c7"/>
+    <ellipse cx="200" cy="200" rx="55" ry="12" fill="#0369a1"/>
+    <!-- Face -->
+    <ellipse cx="200" cy="225" rx="36" ry="42" fill="#a16207"/>
+    <!-- Body — denim jacket -->
+    <path d="M 160 280 Q 160 265 180 260 L 220 260 Q 240 265 240 280 L 250 400 L 150 400 Z" fill="#1e3a8a"/>
+    <!-- Eyes -->
+    <ellipse cx="190" cy="225" rx="2" ry="2.5" fill="#1f2937"/>
+    <ellipse cx="210" cy="225" rx="2" ry="2.5" fill="#1f2937"/>
+  </g>
+
+  <!-- Right worker (man, white hat + reflective vest) -->
+  <g>
+    <!-- Hard hat -->
+    <ellipse cx="400" cy="160" rx="50" ry="34" fill="#ffffff"/>
+    <ellipse cx="400" cy="180" rx="58" ry="13" fill="#e5e7eb"/>
+    <!-- Face -->
+    <ellipse cx="400" cy="210" rx="38" ry="44" fill="#7c2d12"/>
+    <!-- Reflective vest -->
+    <path d="M 350 270 Q 350 255 380 250 L 420 250 Q 450 255 450 270 L 460 400 L 340 400 Z" fill="#facc15"/>
+    <!-- Reflective stripes -->
+    <rect x="340" y="320" width="120" height="14" fill="#94a3b8"/>
+    <rect x="340" y="350" width="120" height="14" fill="#94a3b8"/>
+    <!-- Eyes -->
+    <ellipse cx="390" cy="210" rx="2" ry="2.5" fill="#1f2937"/>
+    <ellipse cx="410" cy="210" rx="2" ry="2.5" fill="#1f2937"/>
+    <!-- Smile -->
+    <path d="M 388 235 Q 400 245 412 235" stroke="#1f2937" stroke-width="2" fill="none"/>
+  </g>
+</svg>

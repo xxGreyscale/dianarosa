@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-neutral-dark;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-gold ring-offset-2;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto max-w-container px-6;
+  }
+
+  /* Hero section gradient — black to light per design */
+  .hero-bg {
+    background: linear-gradient(
+      90deg,
+      #111111 0%,
+      #1f1f1f 35%,
+      #5a5a5a 65%,
+      #d4d4d4 100%
+    );
+  }
+}

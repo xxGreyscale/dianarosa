@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Body -->
+  <path d="M 100 220 Q 100 200 130 195 L 270 195 Q 300 200 300 220 L 320 480 L 80 480 Z" fill="#1f2937"/>
+  <!-- White shirt collar -->
+  <path d="M 160 200 L 200 240 L 240 200 L 240 220 L 200 260 L 160 220 Z" fill="#ffffff"/>
+  <!-- Suit lapels -->
+  <path d="M 130 200 L 170 240 L 170 320 Z" fill="#0f172a"/>
+  <path d="M 270 200 L 230 240 L 230 320 Z" fill="#0f172a"/>
+  <!-- Neck -->
+  <path d="M 180 160 L 220 160 L 215 200 L 185 200 Z" fill="#92400e"/>
+  <!-- Head -->
+  <ellipse cx="200" cy="120" rx="50" ry="60" fill="#a16207"/>
+  <!-- Hair -->
+  <path d="M 150 100 Q 155 60 200 60 Q 245 60 250 100 Q 245 75 200 75 Q 155 75 150 100 Z" fill="#1f2937"/>
+  <!-- Phone (gray) -->
+  <rect x="240" y="80" width="20" height="55" rx="4" fill="#374151" transform="rotate(15 250 110)"/>
+  <!-- Hand holding phone -->
+  <ellipse cx="245" cy="135" rx="18" ry="22" fill="#a16207" transform="rotate(15 245 135)"/>
+  <!-- Watch -->
+  <rect x="120" y="345" width="30" height="20" rx="3" fill="#0f172a"/>
+  <rect x="125" y="350" width="20" height="10" fill="#94a3b8"/>
+  <!-- Other hand -->
+  <ellipse cx="135" cy="380" rx="22" ry="28" fill="#a16207"/>
+  <!-- Smile shape (subtle) -->
+  <path d="M 180 140 Q 200 150 220 140" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.6"/>
+</svg>
