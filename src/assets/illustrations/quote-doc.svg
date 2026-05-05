@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280">
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">
   <!-- Folder back -->
   <path d="M 60 80 L 100 80 L 110 90 L 240 90 L 240 240 L 60 240 Z" fill="#FAC555"/>
   <!-- Folder darker tab -->
