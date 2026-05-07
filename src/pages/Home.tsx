@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { ServiceCard } from '../components/ui/ServiceCard';
+import { AnimateIn } from '../components/ui/AnimateIn';
+import { CountUpStat } from '../components/ui/CountUpStat';
 import { SERVICES, STATS, WHY_CHOOSE_US } from '../lib/constants';
 import { IMAGES, ILLUSTRATIONS } from '../lib/assets';
 
@@ -25,19 +27,21 @@ export function Home() {
         />
         <div className="container-page relative flex min-h-[82vh] items-center pb-16 md:pb-20">
           <div className="max-w-2xl">
-            <h1 className="mb-5 text-4xl font-bold leading-[1.1] md:text-5xl">
+            <h1 className="hero-enter-1 mb-5 text-4xl font-bold leading-[1.1] md:text-5xl">
               Reliable Cargo Movement
               <br />
               Across East Africa
             </h1>
-            <p className="mb-8 max-w-md leading-relaxed text-white/85">
+            <p className="hero-enter-2 mb-8 max-w-md leading-relaxed text-white/85">
               From the Port of Dar es Salaam to major regional corridors, we
               deliver secure, timely, and cost-effective cargo solutions for
               importers, exporters, and corporate clients.
             </p>
-            <Button to="/services" variant="outline-light" size="md">
-              Our Services
-            </Button>
+            <div className="hero-enter-3 inline-block">
+              <Button to="/services" variant="outline-light" size="md">
+                Our Services
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -45,7 +49,10 @@ export function Home() {
       {/* ─── Our Services grid ─── */}
       <section className="relative z-10 pb-16 md:pb-20">
         <div className="container-page">
-          <div className="md:-mt-18 -mt-10 rounded-xl bg-surface-gray px-6 py-10 md:px-12 md:py-12">
+          <AnimateIn
+            className="md:-mt-18 -mt-10 rounded-xl bg-surface-gray px-6 py-10 md:px-12 md:py-12"
+            threshold={0.05}
+          >
             <div className="mx-auto mb-10 max-w-2xl text-center">
               <h2 className="mb-3 text-2xl font-bold text-brand-black md:text-3xl">
                 Our Services
@@ -75,7 +82,7 @@ export function Home() {
                 Learn more
               </Button>
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </section>
 
@@ -87,16 +94,24 @@ export function Home() {
         />
         <div className="container-page relative grid items-center py-4 md:grid-cols-[1.6fr,1fr] md:py-8">
           {/* Truck image side */}
-          <div className="relative z-30 aspect-[4/3] w-full max-w-none md:-ml-[max(24px,calc((100vw-1200px)/2+24px))]">
+          <AnimateIn
+            animation="fade-left"
+            delay={100}
+            className="relative z-30 aspect-[4/3] w-full max-w-none md:-ml-[max(24px,calc((100vw-1200px)/2+24px))]"
+          >
             <img
               src={IMAGES.bigTruck}
               alt=""
               className="object-bottom-left absolute -top-4 left-0 z-40 h-full w-auto min-w-full max-w-none object-cover md:-top-8"
             />
-          </div>
+          </AnimateIn>
 
           {/* Text */}
-          <div className="relative z-30 py-0 pb-0 md:pb-12 md:pt-12">
+          <AnimateIn
+            animation="fade-right"
+            delay={200}
+            className="relative z-30 py-0 pb-0 md:pb-12 md:pt-12"
+          >
             <h2 className="my-5 text-3xl font-bold md:text-4xl">About us</h2>
             <div className="space-y-4 text-sm leading-relaxed text-white/95">
               <p>
@@ -128,7 +143,7 @@ export function Home() {
                 Learn more
               </Link>
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </section>
 
@@ -144,35 +159,39 @@ export function Home() {
         />
 
         <div className="container-page relative">
-          <h2 className="my-20 text-3xl font-bold leading-tight text-brand-black md:text-4xl">
-            Why Choose
-            <br />
-            Diana Rose Logistics?
-          </h2>
+          <AnimateIn>
+            <h2 className="my-20 text-3xl font-bold leading-tight text-brand-black md:text-4xl">
+              Why Choose
+              <br />
+              Diana Rose Logistics?
+            </h2>
+          </AnimateIn>
 
           <div className="mb-16 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-8 md:gap-y-14">
-            {STATS.map(stat => (
-              <div key={stat.label}>
-                <div className="mb-1 text-4xl font-bold text-brand-black md:text-5xl">
-                  {stat.value}
-                </div>
-                <p className="text-sm leading-tight text-neutral-mid">
-                  {stat.label}
-                </p>
-              </div>
+            {STATS.map((stat, i) => (
+              <CountUpStat
+                key={stat.label}
+                value={stat.value}
+                label={stat.label}
+                delay={i * 120}
+              />
             ))}
           </div>
 
           <div className="mb-24 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
-            {WHY_CHOOSE_US.map(reason => (
-              <div key={reason} className="flex items-start gap-3">
+            {WHY_CHOOSE_US.map((reason, i) => (
+              <AnimateIn
+                key={reason}
+                delay={i * 100}
+                className="flex items-start gap-3"
+              >
                 <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-black">
                   <Check size={14} className="text-white" strokeWidth={3} />
                 </div>
                 <p className="text-sm font-semibold text-brand-black">
                   {reason}
                 </p>
-              </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
@@ -181,7 +200,10 @@ export function Home() {
       {/* ─── Trusted Cross-Border Logistics Partner ─── */}
       <section className="bg-gradient-to-r from-brand-black to-neutral-dark text-white">
         <div className="container-page grid min-h-[280px] items-stretch gap-0 md:grid-cols-2">
-          <div className="flex flex-col justify-center py-12 md:py-16">
+          <AnimateIn
+            animation="fade-right"
+            className="flex flex-col justify-center py-12 md:py-16"
+          >
             <h2 className="mb-6 text-3xl font-bold leading-tight md:text-4xl">
               Your Trusted Cross-Border
               <br />
@@ -192,7 +214,7 @@ export function Home() {
                 Get a quote
               </Button>
             </div>
-          </div>
+          </AnimateIn>
 
           <div
             className="hidden bg-cover bg-center md:block"
@@ -207,7 +229,7 @@ export function Home() {
       {/* ─── Our Happy Clients ─── */}
       <section className="bg-surface-gray py-16 md:py-20">
         <div className="container-page">
-          <div className="rounded-xl bg-white px-6 py-10 md:px-12 md:py-14">
+          <AnimateIn className="rounded-xl bg-white px-6 py-10 md:px-12 md:py-14">
             <h2 className="mb-10 text-center text-2xl font-bold text-brand-black md:text-3xl">
               Our Happy Clients
             </h2>
@@ -234,14 +256,14 @@ export function Home() {
               <div className="h-1 w-2 rounded-full bg-neutral-light" />
               <div className="h-1 w-2 rounded-full bg-neutral-light" />
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </section>
 
       {/* ─── Are ready to delivery your cargo ─── */}
       <section className="bg-white pt-16 md:pt-20">
         <div className="container-page grid items-center gap-10 md:grid-cols-2">
-          <div>
+          <AnimateIn animation="fade-right">
             <h2 className="mb-5 text-3xl font-bold leading-tight text-brand-black md:text-4xl">
               Are ready to delivery
               <br />
@@ -261,8 +283,12 @@ export function Home() {
                 Contact us
               </Button>
             </div>
-          </div>
-          <div className="hidden justify-end md:flex">
+          </AnimateIn>
+          <AnimateIn
+            animation="fade-left"
+            delay={150}
+            className="hidden justify-end md:flex"
+          >
             <div
               className="aspect-[4/3] h-[94%] w-full max-w-none bg-cover bg-bottom bg-no-repeat"
               style={{
@@ -270,7 +296,7 @@ export function Home() {
               }}
               aria-hidden="true"
             />
-          </div>
+          </AnimateIn>
         </div>
       </section>
     </>

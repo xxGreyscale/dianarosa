@@ -28,7 +28,7 @@ export function ServiceCard({
 
   if (compact) {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-lg bg-white p-5 text-center">
+      <div className="flex flex-col items-center gap-3 rounded-lg bg-white p-5 text-center transition-transform duration-200 hover:-translate-y-1 hover:shadow-md">
         <div className="text-brand-gold">
           <Icon size={36} strokeWidth={1.75} />
         </div>
@@ -38,7 +38,7 @@ export function ServiceCard({
   }
 
   return (
-    <div className="space-y-3 rounded bg-surface-gray p-7">
+    <div className="space-y-3 rounded bg-surface-gray p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-md">
       <div className="mb-2 flex items-center gap-3">
         <Icon size={28} className="text-brand-gold" strokeWidth={1.75} />
         <h3 className="text-base font-bold text-brand-gold">{title}</h3>
