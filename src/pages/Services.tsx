@@ -36,7 +36,7 @@ export function Services() {
               aria-hidden="true"
             />
             {/* 100+ stat overlay */}
-            <div className="absolute -top-4 right-4 min-w-[140px] rounded-lg bg-white p-4 text-center shadow-md md:right-[-2rem]">
+            <div className="absolute right-3 top-3 min-w-[124px] rounded-lg bg-white p-3 text-center shadow-md md:-top-4 md:right-[-2rem] md:min-w-[140px] md:p-4">
               <div className="text-3xl font-bold leading-none text-brand-black">
                 100+
               </div>
@@ -84,7 +84,7 @@ export function Services() {
           <img
             src={IMAGES.manThinking}
             alt=""
-            className="ml-auto w-full max-w-[280px] object-contain"
+            className="mx-auto w-full max-w-[240px] object-contain md:ml-auto md:mr-0 md:max-w-[280px]"
             aria-hidden="true"
           />
           <div>

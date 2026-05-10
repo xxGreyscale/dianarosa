@@ -93,7 +93,7 @@ export function GetQuote() {
               error={errors.cargoDetails?.message}
             />
 
-            <div className="flex items-center justify-between pt-3">
+            <div className="flex flex-col items-stretch gap-4 pt-3 sm:flex-row sm:items-center sm:justify-between">
               <label className="flex cursor-pointer select-none items-center gap-2">
                 <input
                   type="checkbox"
@@ -108,6 +108,7 @@ export function GetQuote() {
                 type="submit"
                 variant="primary"
                 size="md"
+                className="w-full sm:w-auto"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Submitting…' : 'Submit'}

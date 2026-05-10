@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
+interface UseInViewOptions {
+  once?: boolean;
+  rootMargin?: string;
+}
+
 /**
- * Returns a ref and a boolean that becomes true once the element
- * enters the viewport. Disconnects the observer after the first trigger
- * so the animation only plays once.
+ * Returns a ref and whether the element is currently visible in viewport.
+ * By default it updates on both enter and leave for replayable animations.
  */
-export function useInView(threshold = 0.15) {
+export function useInView(threshold = 0.15, options: UseInViewOptions = {}) {
+  const { once = false, rootMargin = '0px 0px -8% 0px' } = options;
   const ref = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(false);
 
@@ -15,17 +20,18 @@ export function useInView(threshold = 0.15) {
 
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
+        setInView(entry.isIntersecting);
+
+        if (once && entry.isIntersecting) {
           obs.disconnect();
         }
       },
-      { threshold }
+      { threshold, rootMargin }
     );
 
     obs.observe(el);
     return () => obs.disconnect();
-  }, [threshold]);
+  }, [once, rootMargin, threshold]);
 
   return { ref, inView };
 }

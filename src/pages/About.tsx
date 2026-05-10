@@ -141,7 +141,7 @@ export function About() {
               Partner with us for reliable and efficient cargo delivery
               solutions.
             </h2>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Button to="/quote" variant="primary" size="md">
                 Get a quote
               </Button>
@@ -168,7 +168,7 @@ function ValueCard({
   bullets?: string[];
 }) {
   return (
-    <div className="space-y-3 rounded bg-white p-7">
+    <div className="space-y-3 rounded bg-white p-5 md:p-7">
       <div className="flex items-center gap-3">
         <span className="text-brand-gold">{icon}</span>
         <h3 className="text-xl font-bold text-brand-gold">{title}</h3>

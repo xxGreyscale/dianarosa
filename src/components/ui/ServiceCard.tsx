@@ -1,11 +1,13 @@
-import { Truck, Package, ClipboardCheck, MapPin } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import truckIcon from '../../assets/icons/truck.png?url';
+import trollyIcon from '../../assets/icons/trolly.png?url';
+import checklistIcon from '../../assets/icons/checklist.png?url';
+import destinationIcon from '../../assets/icons/destination.png?url';
 
-const iconMap: Record<string, LucideIcon> = {
-  truck: Truck,
-  package: Package,
-  clipboard: ClipboardCheck,
-  mapPin: MapPin,
+const iconMap = {
+  truck: truckIcon,
+  package: trollyIcon,
+  clipboard: checklistIcon,
+  mapPin: destinationIcon,
 };
 
 interface ServiceCardProps {
@@ -24,13 +26,19 @@ export function ServiceCard({
   long,
   compact = false,
 }: ServiceCardProps) {
-  const Icon = iconMap[iconName];
+  const iconSrc = iconMap[iconName];
 
   if (compact) {
     return (
       <div className="flex flex-col items-center gap-3 rounded-lg bg-white p-5 text-center transition-transform duration-200 hover:-translate-y-1 hover:shadow-md">
-        <div className="text-brand-gold">
-          <Icon size={36} strokeWidth={1.75} />
+        <div className="flex h-10 w-10 items-center justify-center">
+          <img
+            src={iconSrc}
+            alt=""
+            className="h-9 w-9 object-contain"
+            loading="lazy"
+            aria-hidden="true"
+          />
         </div>
         <h3 className="text-sm font-semibold text-brand-black">{title}</h3>
       </div>
@@ -40,7 +48,13 @@ export function ServiceCard({
   return (
     <div className="space-y-3 rounded bg-surface-gray p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-md">
       <div className="mb-2 flex items-center gap-3">
-        <Icon size={28} className="text-brand-gold" strokeWidth={1.75} />
+        <img
+          src={iconSrc}
+          alt=""
+          className="h-7 w-7 object-contain"
+          loading="lazy"
+          aria-hidden="true"
+        />
         <h3 className="text-base font-bold text-brand-gold">{title}</h3>
       </div>
       <p className="text-sm leading-relaxed text-neutral-dark">{description}</p>

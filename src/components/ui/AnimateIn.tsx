@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import { useInView } from '../../hooks/useInView';
 
@@ -11,6 +12,8 @@ interface AnimateInProps {
   delay?: number;
   animation?: AnimationType;
   threshold?: number;
+  durationMs?: number;
+  once?: boolean;
   as?: TagName;
 }
 
@@ -27,15 +30,29 @@ export function AnimateIn({
   delay = 0,
   animation = 'fade-up',
   threshold = 0.15,
+  durationMs = 650,
+  once = false,
   as: Tag = 'div',
 }: AnimateInProps) {
-  const { ref, inView } = useInView(threshold);
+  const { ref, inView } = useInView(threshold, { once });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  const style: CSSProperties = inView
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => setPrefersReducedMotion(media.matches);
+    onChange();
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, []);
+
+  const shouldAnimate = inView && !prefersReducedMotion;
+
+  const style: CSSProperties = shouldAnimate
     ? {
-        animation: `${keyframeMap[animation]} 0.6s ease-out ${delay}ms both`,
+        animation: `${keyframeMap[animation]} ${durationMs}ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms both`,
+        willChange: 'opacity, transform',
       }
-    : { opacity: 0 };
+    : { opacity: inView ? 1 : 0 };
 
   return (
     <Tag
