@@ -26,21 +26,21 @@ export function Services() {
 
       {/* ─── Featured: Cargo transportation ─── */}
       <section className="bg-white py-16 md:py-20">
-        <div className="container-page grid items-start gap-10 md:grid-cols-2">
-          <div className="relative">
+        <div className="container-page grid items-center gap-10 md:grid-cols-2">
+          <div className="relative mx-auto w-full max-w-[720px]">
             <div
-              className="aspect-square w-full rounded-md bg-cover bg-center"
+              className="aspect-[4/3] w-full rounded-md bg-cover bg-center"
               style={{
                 backgroundImage: `url('${IMAGES.driver}')`,
               }}
               aria-hidden="true"
             />
             {/* 100+ stat overlay */}
-            <div className="absolute right-3 top-3 min-w-[124px] rounded-lg bg-white p-3 text-center shadow-md md:-top-4 md:right-[-2rem] md:min-w-[140px] md:p-4">
-              <div className="text-3xl font-bold leading-none text-brand-black">
+            <div className="absolute right-3 top-3 min-w-[108px] rounded-2xl bg-white p-3 text-center shadow-2xl ring-1 ring-black/5 md:-top-5 md:right-[-2rem] md:min-w-[132px] md:p-4">
+              <div className="text-2xl font-bold leading-none text-brand-black">
                 100+
               </div>
-              <p className="mt-1 text-xs text-neutral-mid">
+              <p className="mt-1 text-[11px] font-semibold text-neutral-mid">
                 trucks and trailers
               </p>
             </div>

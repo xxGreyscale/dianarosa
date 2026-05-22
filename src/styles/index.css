@@ -47,6 +47,79 @@
   }
 }
 
+@keyframes clientSlider {
+  0%,
+  12% {
+    transform: translateX(0);
+  }
+  20%,
+  32% {
+    transform: translateX(-12.5%);
+  }
+  40%,
+  52% {
+    transform: translateX(-25%);
+  }
+  60%,
+  72% {
+    transform: translateX(-37.5%);
+  }
+  80%,
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes clientSliderTrack {
+  0%,
+  12% {
+    transform: translateX(0);
+  }
+  20%,
+  32% {
+    transform: translateX(calc((100% - 2rem) / 4 * 1));
+  }
+  40%,
+  52% {
+    transform: translateX(calc((100% - 2rem) / 4 * 2));
+  }
+  60%,
+  72% {
+    transform: translateX(calc((100% - 2rem) / 4 * 3));
+  }
+  80%,
+  100% {
+    transform: translateX(calc(100% - 2rem));
+  }
+}
+
+.client-marquee {
+  animation: clientSlider 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.client-slider-animate {
+  animation: clientSliderTrack 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes heroSliderPillPulse {
+  0%,
+  20%,
+  100% {
+    opacity: 0.6;
+  }
+  10%,
+  15% {
+    opacity: 1;
+  }
+}
+
+.hero-slider-pill {
+  animation: heroSliderPillPulse 9s ease-in-out infinite;
+  will-change: opacity;
+}
+
 /* Hero entrance — plays once on mount */
 .hero-enter-1 {
   animation: fadeUp 0.8s ease-out 0.05s both;

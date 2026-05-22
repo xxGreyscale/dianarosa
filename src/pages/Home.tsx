@@ -6,10 +6,15 @@ import { AnimateIn } from '../components/ui/AnimateIn';
 import { CountUpStat } from '../components/ui/CountUpStat';
 import { SERVICES, STATS, WHY_CHOOSE_US } from '../lib/constants';
 import { IMAGES, ILLUSTRATIONS } from '../lib/assets';
+import clientLogo1 from '../assets/logo/client-logo-1.png?url';
+import clientLogo2 from '../assets/logo/client-logo-2.png?url';
+import clientLogo3 from '../assets/logo/client-logo-3.png?url';
+import clientLogo4 from '../assets/logo/client-logo-4.png?url';
 import { useScrollClipPath } from '../hooks/useScrollClipPath';
 import { useScrollTruckMotion } from '../hooks/useScrollTruckMotion';
 
 export function Home() {
+  const heroSlideCount = 3;
   const { ref: aboutSectionRef, clipPath } = useScrollClipPath({
     scrollDownStart: 'polygon(0 0%, 100% 0, 100% 100%, 0 100%)',
     scrollDownEnd: 'polygon(0 20%, 100% 0, 100% 100%, 0 100%)',
@@ -30,9 +35,9 @@ export function Home() {
           }}
           aria-hidden="true"
         />
-        {/* Dark gradient overlay */}
+        {/* Dark gradient overlay for readability on the left */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/85 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/10 to-transparent"
           aria-hidden="true"
         />
         <div className="container-page relative flex min-h-[82vh] items-center pb-16 md:pb-20">
@@ -52,6 +57,18 @@ export function Home() {
                 Our Services
               </Button>
             </div>
+          </div>
+
+          <div className="absolute bottom-20 left-4 flex items-center gap-3 sm:left-8">
+            {Array.from({ length: heroSlideCount }).map((_, index) => (
+              <span
+                key={index}
+                className={`hero-slider-pill h-2 rounded-full ${
+                  index === 0 ? 'w-24 bg-white' : 'w-14 bg-white/30'
+                }`}
+                style={{ animationDelay: `${index * 3}s` }}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -245,28 +262,35 @@ export function Home() {
             <h2 className="mb-10 text-center text-2xl font-bold text-brand-black md:text-3xl">
               Our Happy Clients
             </h2>
-            <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
-              {[
-                'Impala',
-                'Freight Forwarders Tanzania',
-                'Katanga',
-                'Congo Free',
-              ].map(name => (
-                <div
-                  key={name}
-                  className="flex h-16 items-center justify-center opacity-70 grayscale"
-                >
-                  <span className="text-base font-bold tracking-wide text-neutral-mid">
-                    {name}
-                  </span>
-                </div>
-              ))}
+            <div className="relative overflow-hidden rounded-3xl bg-white py-4">
+              <div className="client-marquee flex items-center gap-8 px-4">
+                {[
+                  { src: clientLogo1, alt: 'Client logo 1' },
+                  { src: clientLogo2, alt: 'Client logo 2' },
+                  { src: clientLogo3, alt: 'Client logo 3' },
+                  { src: clientLogo4, alt: 'Client logo 4' },
+                  { src: clientLogo1, alt: 'Client logo 1 duplicate' },
+                  { src: clientLogo2, alt: 'Client logo 2 duplicate' },
+                  { src: clientLogo3, alt: 'Client logo 3 duplicate' },
+                  { src: clientLogo4, alt: 'Client logo 4 duplicate' },
+                ].map((logo, index) => (
+                  <div
+                    key={`${logo.alt}-${index}`}
+                    className="flex h-32 min-w-[220px] flex-shrink-0 items-center justify-center opacity-90"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="max-h-28 max-w-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-            {/* Carousel dots placeholder */}
-            <div className="mt-8 flex justify-center gap-2">
-              <div className="h-1 w-8 rounded-full bg-brand-black" />
-              <div className="h-1 w-2 rounded-full bg-neutral-light" />
-              <div className="h-1 w-2 rounded-full bg-neutral-light" />
+            <div className="mt-8 flex justify-center">
+              <div className="relative h-1 w-24 overflow-hidden rounded-full bg-neutral-light">
+                <span className="client-slider-animate absolute left-0 top-0 h-full w-8 rounded-full bg-brand-black" />
+              </div>
             </div>
           </AnimateIn>
         </div>
